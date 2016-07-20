@@ -3,20 +3,20 @@
 Start Server Run : 
 gradle tomcatRun
 
-End-Points : 
+# End-Points : 
 
-# Get user By ID  <br />
+## Get user By ID  <br />
 http://localhost:8080/user/{id}  <br />
 Method : GET  <br />
 
 
-# Store User
+## Store User
 http://localhost:8080/user <br />
 Method : POST <br />
 Request Body : <br />
 ```json
 {
-  "email" : "email@email.com"
+  "email" : "email@email.com",
   "password" : "pwd"
 }
 ```
