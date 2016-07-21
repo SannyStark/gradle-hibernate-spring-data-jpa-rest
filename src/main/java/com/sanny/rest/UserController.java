@@ -7,6 +7,8 @@ import com.sanny.service.CRMService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created by sanny on 20.07.16.
  */
@@ -24,10 +26,16 @@ public class UserController {
         return user;
     }
 
-    @RequestMapping(value = "/user",method = RequestMethod.POST)
+    @RequestMapping(value = "/user/",method = RequestMethod.POST)
     @JsonView(Views.Public.class)
     public UserDTO user(@RequestBody UserDTO user) {
         return crmService.createUser(user);
+    }
+
+    @RequestMapping(value = "/user/",method = RequestMethod.GET)
+    @JsonView(Views.Public.class)
+    public List<UserDTO> userList(@RequestParam(value = "limit", defaultValue = "1000") Integer limit) {
+        return crmService.listUsers();
     }
 
 }

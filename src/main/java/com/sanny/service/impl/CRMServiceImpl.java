@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by sanny on 20.07.16.
@@ -34,8 +35,9 @@ public class CRMServiceImpl implements CRMService {
 
     @Override
     public List<UserDTO> listUsers() {
-        Iterable<User> all = userDao.findAll();
-        return null;
+        List<User> all = userDao.findAll();
+        List<UserDTO> collect = all.stream().map(entity -> convertToDto(entity)).collect(Collectors.toList());
+        return collect;
     }
 
     @Override
